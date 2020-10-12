@@ -1,5 +1,5 @@
 const btnExo2 = document.querySelector('.exo2');
-
+let gQuantity
 const demandeTemperature = () => {
   let tabData = [];
   let promptQuantity = parseInt(prompt('Veuillez rentrez le nombre de température(s) prélevée(s), minimum 1 et maximum 10.000', ''));
@@ -19,12 +19,13 @@ const demandeTemperature = () => {
     alert('Quantité de température non respectées !');
   }
   alert(`Voici le nombre de température(s) traitées ${qte} et voici les températures : ${tabData}`);
-
+  gQuantity = qte;
   alert(analyzeTemperature(promptQuantity, tabData));
 
 }
 
 const analyzeTemperature = (quantity, data) => {
+  quantity = gQuantity;
  if(quantity === 0){
    return 0
  }
@@ -46,7 +47,7 @@ const analyzeTemperature = (quantity, data) => {
   let nbNeg = Math.abs(Math.max(...tabNeg));
   let nbPos = Math.min(...tabPos);
 
-  return nbNeg < nbPos ? nbNeg : nbPos;
+  return nbNeg < nbPos ? -nbNeg : nbPos;
  }else{
    return "Pas la bonne valeur";
  }
